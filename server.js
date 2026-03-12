@@ -3,12 +3,20 @@ const cors = require('cors');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
+const path = require('path'); // NOVO: Módulo que resolve problemas de pastas
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
 const app = express();
-app.use(express.static('public'));
 app.use(cors());
+
+// NOVO: Diz ao servidor onde está a pasta public de forma exata e absoluta
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ROTA DE SEGURANÇA: Se alguém aceder ao site, força a entrega do ficheiro HTML
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.get('/baixar', (req, res) => {
     const urlDoVideo = req.query.url;
