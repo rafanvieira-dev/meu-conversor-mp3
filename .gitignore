@@ -1,0 +1,14 @@
+# Dependências do Node.js (Isso é o mais importante para não travar o GitHub)
+node_modules/
+
+# Arquivos de log de erros
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de variáveis de ambiente (Se no futuro você usar senhas ou chaves de API)
+.env
+
+# Arquivos de sistema operacional (Esconde arquivos invisíveis do Mac e Windows)
+.DS_Store
+Thumbs.db
