@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Meu Conversor de MP3</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; width: 100%; max-width: 400px; }
+        input { width: 90%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { background-color: #28a745; color: white; border: none; padding: 12px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; width: 100%; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Baixar Áudio (128kbps)</h2>
+        <p>Cola o link do vídeo abaixo:</p>
+        <input type="text" id="linkInput" placeholder="Ex: https://www.youtube.com/watch?v=...">
+        <button onclick="baixarAudio()">Converter e Baixar</button>
+    </div>
+    <script>
+        function baixarAudio() {
+            const link = document.getElementById('linkInput').value;
+            if (!link) { alert('Por favor, insere um link!'); return; }
+            window.location.href = `/baixar?url=${encodeURIComponent(link)}`;
+        }
+    </script>
+</body>
+</html>
